@@ -1,0 +1,118 @@
+    * {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    h2 {
+        text-align: center;
+    }
+    
+    #forecastList {
+        width: 100%;
+        margin: 0 auto;
+    }
+    
+    .dailyMax {
+        font-size: 14px;
+        font-weight: bold;
+        color: #ff1919;
+    }
+    
+    .dailyMin {
+        font-size: 14px;
+        font-weight: bold;
+        color: #1919ff;
+    }
+    
+    .forecastDesc {
+        font-size: 12px;
+    }
+    
+    #dailyForecast {
+        max-width: 300px;
+        margin: 0px auto;
+        box-shadow: 1px 2px 8px 1px rgba(0, 0, 0, 0.3);
+    }
+    
+    .innerDailyForecast {
+        max-width: 300px;
+        min-height: 20px;
+        z-index: 0;
+        display: block;
+        margin: 0px auto;
+        text-decoration: none;
+        padding: 10px;
+    }
+    
+    #dailyTitle {
+        font-size: 16px;
+        font-weight: bold;
+        background-color: #1b81e5;
+        color: white;
+    }
+    
+    .forecastChart {
+        width: 40em;
+        height: 100%;
+        max-width: 100%;
+        margin: auto;
+    }
+    
+    #radioGroup {
+        width: 10em;
+        margin: 0 auto;
+    }
+    
+    [type="radio"]:checked,
+    [type="radio"]:not(:checked) {
+        position: absolute;
+        opacity: 0;
+    }
+    
+    [type="radio"]:checked+label,
+    [type="radio"]:not(:checked)+label {
+        position: relative;
+        padding-left: 28px;
+        cursor: pointer;
+        line-height: 20px;
+        display: inline-block;
+        color: #666;
+    }
+    
+    [type="radio"]:checked+label:before,
+    [type="radio"]:not(:checked)+label:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 18px;
+        height: 18px;
+        border: 1px solid #ddd;
+        border-radius: 100%;
+        background: #fff;
+    }
+    
+    [type="radio"]:checked+label:after,
+    [type="radio"]:not(:checked)+label:after {
+        content: '';
+        width: 12px;
+        height: 12px;
+        background: dodgerblue;
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        border-radius: 100%;
+        -webkit-transition: all 0.2s ease;
+        transition: all 0.2s ease;
+    }
+    
+    [type="radio"]:not(:checked)+label:after {
+        opacity: 0;
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    }
+    
+    [type="radio"]:checked+label:after {
+        opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }

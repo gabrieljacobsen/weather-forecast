@@ -1,0 +1,48 @@
+<div id="forecast" *ngIf="_weekForecast">
+    <h2>Previsão para {{selectedCity}}</h2>
+
+    <div id="radioGroup">
+        <input class="checkmark" id="listRadio" type="radio" 
+               name="dataType" value="list" (change)="radioChange($event)" 
+               [checked]="true" />
+        <label for="listRadio">Lista</label>
+
+        <input class="checkmark" id="chartRadio" type="radio" 
+               name="dataType" value="chart" (change)="radioChange($event)" />
+        <label for="chartRadio">Gráfico</label>
+    </div>
+
+    <br>
+
+    <div id="forecastList" *ngIf="listView">
+        <div *ngFor="let forecast of _weekForecast">
+            <div id="dailyForecast">
+                <div id="dailyTitle" class="innerDailyForecast"> 
+                    {{getWeekDay(forecast.date_br)}} 
+                </div>
+                <div class="innerDailyForecast">
+                    <span class="forecastDesc">  <strong> Temperatura: </strong> </span>
+                    <span class="dailyMax"> {{forecast.temperature.max}}º </span>
+                    <span class="dailyMin"> {{forecast.temperature.min}}º </span>
+                    <br>
+                    <span class="forecastDesc"> 
+                        <strong>Previsão: </strong> {{forecast.text_icon.text.phrase.reduced}} 
+                    </span>
+                    <br>
+                    <span class="forecastDesc">
+                        <strong>Sugestão de atividade: </strong> {{getActivitySuggestion(forecast)}} 
+                    </span>
+                </div>
+            </div>
+            <br>
+        </div>
+    </div>
+
+    <div class="forecastChart" *ngIf="!listView">
+        <canvas baseChart width="640" height="480" 
+                [datasets]="lineChartData" [labels]="lineChartLabels" 
+                [colors]="lineChartColors" [options]="lineChartOptions" 
+                chartType="line" legend="true">
+        </canvas>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="container">
+    <h1> Previsão do Tempo </h1>
+    <div class="filter">
+        <div class="select-box">
+            <label for="stateSelect" class="label stateSelect">
+                <span id="label-desc">Selecione seu Estado</span> 
+            </label>
+            <select id="stateSelect" class="select" value="SC" 
+                    (click)="stateSelectClick($event)" (change)="stateSelectChange($event)">
+                <option *ngFor="let state of states" value="{{state.abbrev}}">
+                    {{state.name}}
+                </option>     
+            </select>
+        </div>
+        <br>
+
+        <input id="cityEdit" class="filterComp" type="text" maxlength="100"
+               placeholder="Cidade" [(ngModel)]="city" 
+               (ngModelChange)="cityOnChange($event)" 
+               (blur)="cityBlur($event)" 
+               (keydown)="cityKeyDown($event)" />
+
+        <div class="autocompleteItem" *ngFor="let city of currentCities" 
+             (click)="autocompleteClick(city)" (mouseenter)="autoCompleteEnter()" 
+             (mouseout)="autoCompleteOut()" [innerHTML]="getAutocompleteDesc(city.name)">
+        </div>
+
+        <br>
+
+        <div>
+            <input id="searchBtn" class="filterComp" type="button" 
+                   value="Pesquisar" (click)="getForecast()" />
+            <input id="prefBtn" class="filterComp" type="button" 
+                   value="Salvar Preferências" (click)="savePreferences()" />
+        </div>
+    </div>
+
+    <br><br>
+    <app-forecast [weekForecast]="weekForecastData" [selectedCity]="selectedCity"></app-forecast>
+</div>
