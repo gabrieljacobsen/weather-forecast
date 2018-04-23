@@ -22,7 +22,7 @@
 
         <div class="autocompleteItem" *ngFor="let city of currentCities" 
              (click)="autocompleteClick(city)" (mouseenter)="autoCompleteEnter()" 
-             (mouseout)="autoCompleteOut()" [innerHTML]="getAutocompleteDesc(city.name)">
+             (mouseout)="autoCompleteOut($event)" [innerHTML]="getAutocompleteDesc(city.name)">
         </div>
 
         <br>

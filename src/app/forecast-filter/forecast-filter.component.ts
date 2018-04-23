@@ -85,14 +85,18 @@ export class ForecastFilterComponent implements OnInit {
     document.getElementById('label-desc').innerHTML = 
       e.currentTarget.options[e.currentTarget.selectedIndex].innerText;
     this.state = (<HTMLInputElement>document.getElementById("stateSelect")).value;
+    this.cityId = null;
   }  
 
-  autoCompleteEnter() {
+  autoCompleteEnter() {    
     this.isOnAutoComplete = true;
   } 
 
-  autoCompleteOut() {
-    this.isOnAutoComplete = false;
+  autoCompleteOut(e) { 
+    const element = e.toElement ? e.toElement : e.relatedTarget;
+    if (element.tagName !== "STRONG" && element.className !== "autocompleteItem") {      
+      this.isOnAutoComplete = false;
+    }
   }
 
   savePreferences() {
