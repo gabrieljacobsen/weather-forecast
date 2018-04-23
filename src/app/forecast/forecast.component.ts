@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ForecastComponent implements OnInit {
      
-  private _weekForecast;
+  _weekForecast;
   @Input() selectedCity: string;
   listView = true;
   lineChartData:Array<any> = [];
