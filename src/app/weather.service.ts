@@ -4,7 +4,7 @@ import { Http } from '@angular/http';
 @Injectable()
 export class WeatherService {  
   private tokenParam = 'token=7abad7661be9228eb219ae406702a95f';
-  private url = 'http://apiadvisor.climatempo.com.br/api/v1/';
+  private url = window.location.protocol + '//apiadvisor.climatempo.com.br/api/v1/';
   cities;
   public weekForecastData;
 
